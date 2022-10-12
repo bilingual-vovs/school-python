@@ -1,4 +1,3 @@
-
 input = open("./input.txt",  "r")
 data = input.read()
 ans = ""
@@ -13,4 +12,4 @@ for e in a:
 
 
 an = open("output.txt", "w")
-an.write(str(len(ans)/2) + "\n" + ans)
+an.write(str(len(ans)/2) + "\n" + ans[:-1])
