@@ -1,12 +1,14 @@
-input = open("input.txt", "r").read()
+input = input()
 
-x = input[0]
-y = input[2]
+x = int(input[0])
+y = int(input[2])
 
-input = input[4:]
+m = []
+for _ in range(x):
+    a = str(input())
+    print(str(a))
+    m.append(a)
 
-m = [a.split(" ") for a in input.split("\n")]
-res = "\n".join([" ".join([c[b] for c in reversed(m)]) for b in range(int(y))])
+res = "\n".join([" ".join([c[b] for c in reversed(m)]) for b in range(y)])
 
-out = open("output.txt", "w")
-out.write(y + " " + x + "\n" + res) 
+print(y + " " + x + "\n" + res) 
