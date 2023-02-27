@@ -1,7 +1,7 @@
-c = input().split()
-p = 1
-ph = int(input())
-for x in c:
-    if int(x) >= ph: p += 1
+clas = input().split(" ")
+position = 1
+petro = int(input())
+for x in clas:
+    if int(x) >= petro: position += 1
     # p += int(int(x)>=ph)
-print(p)
+print(position)
