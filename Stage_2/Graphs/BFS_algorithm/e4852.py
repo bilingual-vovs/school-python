@@ -49,4 +49,6 @@ for x in range(n):
     m.append([int(y) for y in input().split()])
 
 graph.matrix = m
-print(graph.find_path_length(int(inp[1])-1, int(inp[2])-1)-1)
+graph.bake_bfs(int(inp[1])-1)
+print(" ".join(graph.bakemap))
+
