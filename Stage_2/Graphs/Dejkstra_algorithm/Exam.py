@@ -18,13 +18,11 @@ for x in range(n-1):
     for y in range(n):
         if matrix[act][y] and dejfix[y] == -1:
             dejlist[y] = min(dejlist[y], dejfix[act] + matrix[act][y])
-    i = 0
     minm = float('inf')
     for y in range(n):
         if minm > dejlist[y] and dejfix[y] == -1:
             minm = dejlist[y]
-            indx = i
-        i+=1
+            indx = y
     act = indx
     dejfix[act] = minm
 

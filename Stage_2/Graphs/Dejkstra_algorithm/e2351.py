@@ -1,52 +1,34 @@
-class Graph:
-    def __init__(self, node_count):
-        self.node_count = node_count
-        self.matrix = [[False for _ in range(node_count)] for _ in range(node_count)]
-    
-    def add_edge(self, a, b, c = 1):
-        self.matrix[a][b] = self.matrix[b][a] = c
+import random
+# inp = input().split()
+while True:
+    n = random.randint(1, 200)
+    s = random.randint(1, n-1)
+    to = random.randint(1, n-1)
 
-    def add_edge_strict(self, a, b, c = 1):
-        self.matrix[a][b] = c
+    matrix = []
+    for _ in range(n):
+        matrix.append([random.choices([random.randint(0, n), -1], weights=(30, 70), k=2)[0] + 1 for x in range(n)])
 
-    def get_list(self):
-        res_list = [[] for _ in range(self.node_count)]
-        for y in range(self.node_count):
-            for x in range(self.node_count):
-                if self.matrix[x][y]:
-                    res_list[x].append(y)
-        return res_list
 
-    def bake_dej(self, start):
-        dejlist = [float('inf') for x in range(self.node_count)]
-        dejlist[start] = 0
-        dejfix = [-1 for x in range(self.node_count)]
-        dejfix[start] = 0
-        act = start
+    dejlist = [float('inf') for x in range(n)]
+    dejlist[s] = 0
+    dejfix = [-1 for x in range(n)]
+    dejfix[s] = 0
+    act = s
 
-        for x in range(self.node_count-1):
-            for y in range(self.node_count):
-                if self.matrix[act][y] and dejfix[y] == -1:
-                    dejlist[y] = min(dejlist[y], dejfix[act] + self.matrix[act][y]-1)
-            i = 0
-            minm = float('inf')
-            for y in range(self.node_count):
-                if minm > dejlist[y] and dejfix[y] == -1:
-                    indx = y
-                    minm = dejlist[y]
-                i+=1
+    for _ in range(n-1):
+        for y in range(n):
+            if matrix[act][y] and dejfix[y] == -1:
+                dejlist[y] = min(dejlist[y], dejfix[act] + matrix[act][y]-1)
+        indx = 'f'
+        minm = float('inf')
+        for y in range(n):
+            if minm > dejlist[y] and dejfix[y] == -1:
+                minm = dejlist[y]
+                indx = y
+        if indx != 'f':
             act = indx
             dejfix[act] = minm
-        return dejfix
 
-inp = input().split()                
+    print(n, s, to ,dejfix[to])
 
-graph = Graph(int(inp[0]))
-
-matrix = []
-for x in range(int(inp[0])):
-    matrix.append([int(y)+1 for y in input().split()])
-
-graph.matrix = matrix
-
-print(graph.bake_dej(int(inp[1])-1)[int(inp[2])-1])
