@@ -11,7 +11,19 @@ for i in range(len(a)):
     m.append(ml)
 
 s = []
-
-
+i = j = -1
+for x in range(m[-1][-1]):
+    if a[i] == b[j]: 
+        s.append(a[i])
+        i -= 1
+        j -= 1
+    elif m[i-1][j] > m[i][j-1]:
+        s.append(a[i])
+        i-=1
+    else:
+        s.append(b[j])
+        j-=1
 for x in m:
     print(x)
+
+print(s)
