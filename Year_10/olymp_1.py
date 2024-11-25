@@ -1,7 +1,7 @@
 n = int(input())
 
 if n == 0:
-    print(-1)
+    print(0)
 else:
 
     def minN(ln):
@@ -16,9 +16,9 @@ else:
 
     m = [[0 for _ in range(n+1)] for _ in range(n+1)]
 
-    if n >= 2:  
-        m[1][1] = 1
-        m[2][2] = 1
+    
+    if n >= 1: m[1][1] = 1
+    if n >= 2:    m[2][2] = 1
     m[0][0] = 1
 
     for ln in range(2,n+1):
